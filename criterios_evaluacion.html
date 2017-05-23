@@ -1,0 +1,96 @@
+<html>
+<head>
+<title>Criterios de evaluación</title>
+<script src="jquery-321.min.js"></script>
+<script src="angular.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="responsive.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="micss.css">
+<link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body id="fondo">
+	<nav class="topnav" id="myTopnav">
+	<div class="container1">
+        <a id="principal">Página principal</a>
+        <a id="materias">Materias</a>
+        <a id="grupos">Grupos</a>        
+        <a id="criterios_evaluacion">Criterios de evaluacion</a>
+    	<a id="plan_trabajo">Plan de trabajo</a>
+		<a id="asistencias">Asistencias</a>
+		<a id="tareas">Tareas</a>
+		<a id="examenes">Examenes</a>
+        <a href="javascript:void(0);" class="icon" onclick="NavigationResponsive()">&#9776;</a>
+    </div>
+    </nav>
+
+    <label><h2> Criterios de evaluacion de: </h2></label>
+	<label><h2> Ing. Mwry Luis Alvarado Preciado. </h2></label>
+	</div>
+	<h3 align="center">AGREGAR CRITERIO</h3>
+	<form>
+	<center>
+	Materia: Topicos avanzados de Teemo.
+	Unidad #: <input type="number" id="unidad" name="unidad" value="1">
+	Descripción: <input type="text" id="descripcion" name="descripcion" placeholder="descripcion..." required>
+	Porcentaje: <input type="number" id="porc" name="porc" value="0" class="form-inline" required> %
+	<p>
+	<input type="button" id="agregarfila" name="agregarfila" value="agregar fila" class="btn">
+	<input type="button" id="quitarfila" name="quitarfila" value="Quitar ultimo tema fila" class="btn btn-danger">
+	</p>
+	<table width="100%">
+	<thead>
+	<th>
+	UNIDAD
+	</th>
+	<th>
+	DESCRIPCIÓN
+	</th>	
+	<th>
+	PORCENTAJE
+	</th>
+	<th>
+	EDITAR	
+	</th>
+	<th>
+	ELIMINAR
+	</th>
+	</thead>
+	<tbody id="mitabla">
+	<tr></tr>
+	</tbody>
+	</table>
+
+<footer class="navbar">
+	<p><i>DISEÑOS:</i></p>
+	<div class="btn-group">
+	<a onclick="StyleNormal()" class="btn btn-primary">Clasico</a>
+    <a onclick="StylePizarron()" class="btn btn-primary">Pizarron</a>
+	<a onclick="StyleMadera()" class="btn btn-primary">Madera</a>
+	<a onclick="StyleMetalico()" class="btn btn-primary">Metalico</a>
+	</div>
+</footer>
+
+</body>
+
+<script language="javascript" type="text/javascript">
+//llamada del metodo StyleNormal que precargara el estilo en la pagina
+StyleNormal();
+
+$(document).ready(
+	$("#agregarfila").click(
+		function(){
+			if(document.getElementById("mitabla").childNodes.length < 3)
+			{
+				$('#mitabla').append("<tr></tr>");	
+			}
+			var unidad = document.getElementById("unidad").value;
+			var descripcion = document.getElementById("descripcion").value;
+			var porcentaje = document.getElementById("porc").value;
+			$('#mitabla tr:last').after('<tr><td>'+ unidad +'</td> <td>'+ descripcion +'</td> <td>'+ porcentaje +'%</td> <td><a>Editar</a></td> <td><a>Eliminar</a></td> </tr>');
+		})
+	);
+
+</script>

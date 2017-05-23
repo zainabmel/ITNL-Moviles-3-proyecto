@@ -1,0 +1,219 @@
+﻿<html>
+<head>
+<title>Asistencias</title>
+<script src="jquery-321.min.js"></script>
+<script src="angular.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="responsive.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="micss.css">
+<link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body id="fondo">
+	<nav class="topnav" id="myTopnav">
+	<div class="container1">
+        <a id="principal">Página principal</a>
+        <a id="materias">Materias</a>
+        <a id="grupos">Grupos</a>        
+        <a id="criterios_evaluacion">Criterios de evaluacion</a>
+    	<a id="plan_trabajo">Plan de trabajo</a>
+		<a id="asistencias">Asistencias</a>
+		<a id="tareas">Tareas</a>
+		<a id="examenes">Examenes</a>
+        <a href="javascript:void(0);" class="icon" onclick="NavigationResponsive()">&#9776;</a>
+    </div>
+    </nav>
+	
+<div class="container">
+<p><label><h2 align="center"> Asistencias</h2></label></p>
+<p><label><h2> Ing. Mwry Luis Alvarado Preciado </h2></label></p>
+
+<section class="col-sm-4 sidenav">
+<table id="formulario" width="100%">
+<tr><td>
+
+<br>
+<p>Materias</p>
+<select id="materias_por_maestro" onChange="Alumnos()"  class="form form-control">
+<option>Subir a diamante V</option>
+<option>Carrear mancos</option>
+</select>
+</td></tr>
+</table>
+<br>
+<br>
+</section>
+
+<aside class="col-sm-6">
+<div class="table-responsive">
+<table id="generados" name="generados" width="70%" class="table table-hover">
+
+<thead>
+
+<th colspan="2"><center><i>Asistencias de alumnos</i></center></th>
+
+</thead>
+
+<tbody>
+
+<tr><td><i>Esta ausente</i></td><td><i>Alumno</i></td></tr>
+
+<tr>
+<td width="20%">
+<input type="checkbox" id="chkalumno1" name="chkalumno1" class="input-lg">
+</td>
+<td id="alumno1">
+Miguel Angel Rodriguez Aguirre
+</td>
+</tr>
+
+<tr>
+<td width="20%">
+<input type="checkbox" id="chkalumno2" name="chkalumno2" class="input-lg">
+</td>
+<td id="alumno2">
+Karla Karina Rodriguez Lopez
+</td>
+</tr>
+
+<tr>
+<td width="20%">
+<input type="checkbox" id="chkalumno3" name="chkalumno3" class="input-lg">
+</td>
+<td id="alumno3">
+Oscar Ivan Rivera Mendoza
+</td>
+</tr>
+</tbody>
+
+</table>
+</div>
+</aside>
+</div>
+
+<div>
+<center>
+<a id="descargar" onClick="GuardarXML();" class="btn btn-success">Generar XML</a>
+<input type="button" id="mostrardom" name="mostrardom" value="Generar DOM" onClick="verificarnodos(document.childNodes[0]);" class="btn btn-success">
+</center>
+</div>
+
+<footer class="navbar">
+	<p><i>DISEÑOS:</i></p>
+	<div class="btn-group">
+	<a onclick="StyleNormal();TextoNegro('generados');" class="btn btn-primary">Clasico</a>
+    <a onclick="StylePizarron();TextoNegro('generados');" class="btn btn-primary">Pizarron</a>
+	<a onclick="StyleMadera();TextoNegro('generados');" class="btn btn-primary">Madera</a>
+	<a onclick="StyleMetalico();TextoBlanco('generados');" class="btn btn-primary">Metalico</a>
+	</div>
+</footer>
+
+</body>
+
+<script language="javascript" type="text/javascript">
+
+//funcion que verificara los nodos empezando desde htnl
+//verificarnodos(document);
+
+function verificarnodos(elemento)
+{
+	if(elemento.firstElementChild)
+	{	
+		document.writeln("<p>" + elemento.nodeName + "</p>");
+		
+		var bandera = true;
+		var hijoanalizado = elemento.firstElementChild;
+		for(var i= 0; i< elemento.children.length; i++)
+		{
+			if(bandera)
+			{
+				verificarnodos(hijoanalizado);
+				bandera = false;
+			}
+			else
+			{
+				if(i > 0)
+				{
+					hijoanalizado = hijoanalizado.nextElementSibling;
+					verificarnodos(hijoanalizado);
+				}
+			}
+		}
+	}
+	else
+	{
+		document.writeln("<p>" + elemento.nodeName + "</p>");	
+	}
+}
+
+//arreglo con nombres de alumnos
+var alumnos = ["Miguel", "Karla", "Oscar", "Scarleth", "Jessica", "Rigoberto", "Pablo", "Yololtzin", "Celis", "Ari", "José", "Erick"]
+function Alumnos()
+{
+//En grupos de 3, materia 1 primeros 3, materia 2, segundos 3, etc
+switch(document.getElementById("materias_por_maestro").selectedIndex)
+{
+	case 0:
+	document.getElementById("alumno1").innerHTML = alumnos[0];
+	document.getElementById("alumno2").innerHTML = alumnos[1];
+	document.getElementById("alumno3").innerHTML = alumnos[2];
+	break;
+	
+	default:
+	document.getElementById("alumno1").innerHTML = alumnos[3];
+	document.getElementById("alumno2").innerHTML = alumnos[4];
+	document.getElementById("alumno3").innerHTML = alumnos[5];
+	break;
+	}
+}
+//creacion de un nuevo XML
+function GuardarXML()
+{
+	var contenidoDeArchivo = GenerarXML();
+	var elem = document.getElementById('descargar');
+	elem.download = "reporte_asistencia.xml";
+	elem.href = "data:application/octet-stream," 
+                     + encodeURIComponent(contenidoDeArchivo);
+	}
+
+function GenerarXML()
+{
+	var cadenainicial = '<?xml version="1.0" encoding="UTF-8"?> \n';	
+	var contenido = "";
+	for(var i =2; i < document.getElementById("generados").rows.length; i++)
+	{
+		var nombre = document.getElementById("generados").rows[i].childNodes[3].childNodes[0].textContent;
+		var asistio = ((document.getElementById("generados").rows[2].childNodes[1].childNodes[1].checked) ? "No" : "Si");
+		contenido += '\n\r<Alumno id="1"> \n\r<Nombre>' + nombre + '</Nombre>\n\r<Asistencia>' + asistio + '</Asistencia> \n\r</Alumno>\n\r';
+	}
+	var miXML = elemento("ALUMNOS",contenido );
+	miXML = cadenainicial + miXML;
+	
+	return miXML;
+}
+
+function elemento(name, content)
+{
+	// Bare bones XML writer - no attributes
+	var xml
+   	if (!content)
+	{
+        xml='<' + name + '/>' + '\n'
+    }
+    else 
+	{
+     	xml='<'+ name + '>' + '\n' + content + '\n' + '</' + name + '>' + '\n'
+    }
+    return xml
+}
+
+//llamada del metodo StyleNormal que precargara el estilo en la pagina
+StyleNormal();
+
+
+
+</script>
+
+</html>

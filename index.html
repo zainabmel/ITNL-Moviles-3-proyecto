@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>Página principal</title>
+<script src="jquery-321.min.js"></script>
+<script src="angular.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="responsive.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="micss.css">
+<link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body id="fondo">
+	<nav class="topnav" id="myTopnav">
+	<div class="container1">
+        <a id="principal">Página principal</a>
+        <a id="materias">Materias</a>
+        <a id="grupos">Grupos</a>        
+        <a id="criterios_evaluacion">Criterios de evaluacion</a>
+    	  <a id="plan_trabajo">Plan de trabajo</a>
+		    <a id="asistencias">Asistencias</a>
+		    <a id="tareas">Tareas</a>
+		    <a id="examenes">Examenes</a>
+        <a href="javascript:void(0);" class="icon" onclick="NavigationResponsive()">&#9776;</a>
+    </div>
+    </nav>
+
+	<div class="text-center">
+
+  	<dl>
+    <dt>Bienvenidos a nuestra página</dt> 
+    <dd>Esta pagina tiene como objetivo el facilitar a los maestros realizar evaluaciones a sus alumnos de manera electronica.</dd> 
+    </dl>
+  <form action="validar.php" method="post">
+  <div class="imgcontainer">
+    <img src="login2.jpg" class="img-circle">
+  </div>
+
+  <div class="container">
+    <label><h3><b><kbd>Usuario</kbd></b></h3></label>
+    <input type="text" placeholder="usuario..." name="uname" class="form form-control" required>
+
+    <label><h3><b><kbd>Contraseña</kbd></b></h3></label>
+    <input type="password" placeholder="contraseña..." name="psw" class="form form-control" required>
+    <p></p>
+    <p><button type="submit" class="form form-control btn btn-success" onclick="alert('Noon')">Iniciar sesión</button></p>
+    <input type="checkbox" checked="checked"> Recordarme
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <span class="">¿Olvidó su <a id="oc" href="#">contraseña?</a></span>
+  </div>
+</form>
+	</div>
+
+  <table width="100%">
+  <thead>
+  <th>
+
+<footer class="navbar">
+	<p><i>DISEÑOS:</i></p>
+	<div class="btn-group">
+	<a onclick="StyleNormal()" class="btn btn-primary">Clasico</a>
+  <a onclick="StylePizarron()" class="btn btn-primary">Pizarron</a>
+	<a onclick="StyleMadera()" class="btn btn-primary">Madera</a>
+	<a onclick="StyleMetalico()" class="btn btn-primary">Metalico</a>
+	</div>
+</footer>
+
+</body>
+
+<script language="javascript" type="text/javascript">
+//llamada del metodo StyleNormal que precargara el estilo en la pagina
+StyleNormal();
+document.getElementById("oc").style.background="transparent";
+//document.getElementById("mitabla_filter").childNodes[0].childNodes[0].textContent="Buscar: "
+</script>

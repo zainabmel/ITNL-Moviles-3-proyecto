@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>Tareas</title>
+<script src="jquery-321.min.js"></script>
+<script src="angular.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="responsive.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="micss.css">
+<link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body id="fondo">
+	<nav class="topnav" id="myTopnav">
+	<div class="container1">
+        <a id="principal">Página principal</a>
+        <a id="materias">Materias</a>
+        <a id="grupos">Grupos</a>        
+        <a id="criterios_evaluacion">Criterios de evaluacion</a>
+    	<a id="plan_trabajo">Plan de trabajo</a>
+		<a id="asistencias">Asistencias</a>
+		<a id="tareas">Tareas</a>
+		<a id="examenes">Examenes</a>
+        <a href="javascript:void(0);" class="icon" onclick="NavigationResponsive()">&#9776;</a>
+    </div>
+    </nav>
+
+
+
+<div class="container">
+
+<p><label><h2 align="center"> Tareas</h2></label></p>
+<p><label><h2> Ing. Mwry Luis Alvarado Preciado </h2></label></p>
+
+<section class="col-sm-4 sidenav">
+<table id="formulario" width="100%">
+<tr><td>
+
+<br>
+<p>Materias</p>
+<select id="materias_por_maestro" onChange="Alumnos()"  class="form form-control">
+<option>Subir a diamante V</option>
+<option>Carrear mancos</option>
+</select>
+</td></tr>
+</table>
+<br>
+<br>
+</section>
+
+<aside>
+<div class="table-responsive">
+<table id="generados" name="generados" width="70%" class="table table-hover">
+
+<thead>
+
+<th colspan="2"><center><i>Tareas de alumnos</i></center></th>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td><i>No. Control</i></td>
+<td><i>Alumno</i></td><td>
+<i>Tarea</i></td><td>
+<i>Calificación</i></td>
+</tr>
+
+<tr>
+<td width="20%">
+</td>
+<td id="alumno1">
+Miguel Angel Rodriguez Aguirre
+</td>
+</tr>
+
+<tr>
+<td width="20%">
+</td>
+<td id="alumno2">
+Karla Karina Rodriguez Lopez
+</td>
+</tr>
+
+<tr>
+<td width="20%">
+</td>
+<td id="alumno3">
+Oscar Ivan Rivera Mendoza
+</td>
+</tr>
+</tbody>
+
+</table>
+</div>
+</aside>
+</div>
+
+
+<footer class="navbar">
+	<p><i>DISEÑOS:</i></p>
+	<div class="btn-group">
+	<a onclick="StyleNormal()" class="btn btn-primary">Clasico</a>
+    <a onclick="StylePizarron()" class="btn btn-primary">Pizarron</a>
+	<a onclick="StyleMadera()" class="btn btn-primary">Madera</a>
+	<a onclick="StyleMetalico()" class="btn btn-primary">Metalico</a>
+	</div>
+</footer>
+
+</body>
+
+<script language="javascript" type="text/javascript">
+//llamada del metodo StyleNormal que precargara el estilo en la pagina
+StyleNormal();
+
+
+
+
+</script>

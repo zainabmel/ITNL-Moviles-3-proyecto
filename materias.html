@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>Materias</title>
+<script src="jquery-321.min.js"></script>
+<script src="angular.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="responsive.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="micss.css">
+<link rel="stylesheet" href="bootstrap.min.css">
+</head>
+
+<body id="fondo">
+	<nav class="topnav" id="myTopnav">
+	<div class="container1">
+        <a id="principal">Página principal</a>
+        <a id="materias">Materias</a>
+        <a id="grupos">Grupos</a>        
+        <a id="criterios_evaluacion">Criterios de evaluacion</a>
+    	<a id="plan_trabajo">Plan de trabajo</a>
+		<a id="asistencias">Asistencias</a>
+		<a id="tareas">Tareas</a>
+		<a id="examenes">Examenes</a>
+        <a href="javascript:void(0);" class="icon" onclick="NavigationResponsive()">&#9776;</a>
+    </div>
+    </nav>
+
+	<label><h2> Materias de: </h2></label>
+	<label><h2> Ing. Mwry Luis Alvarado Preciado. </h2></label>
+
+    <h4>Subir archivo XML con sus materias:</h4>
+    <p><input type="button" id="btncargarxml" name="btncargarxml" value="Cargar..."></p>
+
+
+    MATERIA
+  	</th>
+  	</thead>
+  	<tbody id="mitabla">
+  	<tr></tr>
+  	</tbody>
+ 	</table>
+
+<footer class="navbar">
+	<p><i>DISEÑOS:</i></p>
+	<div class="btn-group">
+	<a onclick="StyleNormal()" class="btn btn-primary">Clasico</a>
+    <a onclick="StylePizarron()" class="btn btn-primary">Pizarron</a>
+	<a onclick="StyleMadera()" class="btn btn-primary">Madera</a>
+	<a onclick="StyleMetalico()" class="btn btn-primary">Metalico</a>
+	</div>
+</footer>
+
+</body>
+
+<script language="javascript" type="text/javascript">
+//llamada del metodo StyleNormal que precargara el estilo en la pagina
+StyleNormal();
+
+$(document).ready(
+
+
+	);
+
+function cargarXML()
+{
+var nombrexml = document.getElementById("scharchivo").value.trim();
+//documento xml y html deben ir en misma carpeta 
+var xmlDoc=null;
+if (window.ActiveXObject)
+{// code for IE
+xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+console.log("pase por IE");
+}
+else if (document.implementation.createDocument)
+{// code for Mozilla, Firefox, Opera, etc.
+xmlDoc=document.implementation.createDocument("","",null);
+//console.log("pase por otros");
+}
+else
+{
+alert('Tu navegador no soporta esta funcion');
+} 
+
+if (xmlDoc!=null) 
+{
+xmlDoc.async = false;
+xmlDoc.load(nombrexml.trim());
+var materias = xmlDoc.getElementsByTagName("Factura");
+
+
+for (var i=0;i<x.length;i++)
+{
+//variables que guardan los datos del xml
+var mirfc = materias[0].getElementsByTagName("RFC")[0].childNodes[0].nodeValue;
+
+}}
+}
+
+</script>
